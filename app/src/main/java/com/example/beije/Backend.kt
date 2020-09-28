@@ -28,18 +28,16 @@ class Backend(
     private val api = Retrofit.Builder()
         .addConverterFactory(GsonConverterFactory.create(gson))
         .addCallAdapterFactory(RxJava3CallAdapterFactory.createWithScheduler(networkThread))
-        .baseUrl(resources.getString(/*R.string.base_url*/))
+        .baseUrl(resources.getString(R.string.base_url))
         .client(privateOkHttpClient)
         .build()
         .create(ListingApi::class.java)
 
-    fun getNewsData(): Single<List<MonclairResponse>> = api.getNewsData()
-
-    fun getDetailNewsData(id: Int): Single<MonclairResponse> = api.getDetailNewsData(id)
+    fun getData(): Single<List<MonclairResponse>> = api.getData()
 
     private interface ListingApi {
 
-        @GET("")
-        fun getNewsData(): Single<List<MonclairResponse>>
+        @GET("wp-json/mobileApp/v1/getPressReleasesDocs/")
+        fun getData(): Single<List<MonclairResponse>>
 
 }

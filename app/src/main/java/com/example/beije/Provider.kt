@@ -8,7 +8,7 @@ interface Contract {
 
 class Provider(private val backend: Backend) : Contract {
     override fun getData(): Single<List<MonclairResponse>> {
-        return backend.getNewsData()
+        return backend.getData()
     }
 
 }

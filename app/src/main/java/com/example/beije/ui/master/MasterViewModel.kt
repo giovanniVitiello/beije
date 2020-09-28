@@ -13,7 +13,7 @@ sealed class MasterEvent {
 
 sealed class MasterState {
     object InProgress : MasterState()
-    data class LoadedData(val news: List<MonclairResponse>) : MasterState()
+    data class LoadedData(val data: List<MonclairResponse>) : MasterState()
     data class Error(val error: Throwable) : MasterState()
 }
 

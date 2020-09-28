@@ -8,13 +8,13 @@
     <fragment
         android:id="@+id/navigation_master"
         android:name="com.example.beije.ui.master.MasterScreen"
-        android:label="@string/title_home"
+        android:label="@string/title_master"
         tools:layout="@layout/master_screen" />
 
     <fragment
         android:id="@+id/navigation_detail"
         android:name="com.example.beije.ui.detail.DetailScreen"
-        android:label="@string/title_dashboard"
+        android:label="@string/title_detail"
         tools:layout="@layout/detail_screen" />
 
 </navigation>

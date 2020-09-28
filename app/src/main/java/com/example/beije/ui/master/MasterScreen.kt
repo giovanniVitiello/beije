@@ -13,7 +13,7 @@ import com.example.beije.databinding.MasterScreenBinding
 
 class MasterScreen : Fragment() {
 
-    private lateinit var homeViewModel: MasterViewModel
+    private lateinit var masterViewModel: MasterViewModel
     private lateinit var binding: MasterScreenBinding
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
