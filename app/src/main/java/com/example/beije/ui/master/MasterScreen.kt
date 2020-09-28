@@ -10,16 +10,19 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.beije.R
 import com.example.beije.databinding.MasterScreenBinding
+import com.example.beije.ui.detail.DetailViewModel
+import org.koin.android.ext.android.inject
 
 class MasterScreen : Fragment() {
 
-    private lateinit var masterViewModel: MasterViewModel
+    private val masterViewModel: MasterViewModel by inject()
     private lateinit var binding: MasterScreenBinding
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         binding = MasterScreenBinding.inflate(inflater, container, false)
 
+        masterViewModel.send(MasterEvent.LoadData)
         return binding.root
     }
 }

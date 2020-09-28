@@ -1,6 +1,7 @@
 package com.example.beije.ui.master
 
 import com.example.beije.Contract
+import com.example.beije.response.MonclairObjectResponse
 import com.example.beije.ui.detail.DetailState
 import com.example.beije.utils.exhaustive
 import com.nrc.snr.base.BaseViewModel
@@ -13,7 +14,7 @@ sealed class MasterEvent {
 
 sealed class MasterState {
     object InProgress : MasterState()
-    data class LoadedData(val data: List<MonclairResponse>) : MasterState()
+    data class LoadedData(val data: List<MonclairObjectResponse>) : MasterState()
     data class Error(val error: Throwable) : MasterState()
 }
 

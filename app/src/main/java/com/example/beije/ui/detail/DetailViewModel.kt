@@ -1,18 +1,20 @@
 package com.example.beije.ui.detail
 
 import com.example.beije.Contract
+import com.example.beije.response.MonclairObjectResponse
 import com.example.beije.utils.exhaustive
 import com.nrc.snr.base.BaseViewModel
 import io.reactivex.rxjava3.core.Scheduler
 import io.reactivex.rxjava3.disposables.Disposable
+import timber.log.Timber
 
 sealed class DetailEvent {
-    data class Load(val id: Int) : DetailEvent()
+    object Load : DetailEvent()
 }
 
 sealed class DetailState {
     object InProgress : DetailState()
-    data class Loaded(val detail: MonclairResponse) : DetailState()
+    object Loaded : DetailState()
     data class Error(val error: Throwable) : DetailState()
 }
 
@@ -24,20 +26,8 @@ class DetailViewModel(
 
     override fun send(event: DetailEvent) {
         when (event) {
-            is DetailEvent.Load -> loadDetailData(event.id)
+            is DetailEvent.Load -> Timber.i("prova")
         }.exhaustive
     }
 
-    private fun loadDetailData(id: Int) {
-        if (subscription.isDisposed) {
-            post(DetailState.InProgress)
-            subscription = contract.getData()
-                .observeOn(scheduler)
-                .subscribe(
-                    { detail -> post(DetailState.Loaded(detail)) },
-                    { error -> post(DetailState.Error(error)) }
-                )
-            disposables.add(subscription)
-        }
-    }
 }

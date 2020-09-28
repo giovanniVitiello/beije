@@ -1,6 +1,7 @@
 package com.example.beije
 
 import android.content.res.Resources
+import com.example.beije.response.MonclairObjectResponse
 import com.google.gson.Gson
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -33,11 +34,12 @@ class Backend(
         .build()
         .create(ListingApi::class.java)
 
-    fun getData(): Single<List<MonclairResponse>> = api.getData()
+    fun getData(): Single<List<MonclairObjectResponse>> = api.getData()
 
     private interface ListingApi {
 
         @GET("wp-json/mobileApp/v1/getPressReleasesDocs/")
-        fun getData(): Single<List<MonclairResponse>>
+        fun getData(): Single<List<MonclairObjectResponse>>
 
+    }
 }
