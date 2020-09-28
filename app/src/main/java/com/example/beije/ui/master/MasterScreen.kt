@@ -1,4 +1,4 @@
-package com.example.beije.ui.dashboard
+package com.example.beije.ui.master
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,20 +10,20 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.beije.R
 
-class DashboardFragment : Fragment() {
+class MasterScreen : Fragment() {
 
-    private lateinit var dashboardViewModel: DashboardViewModel
+    private lateinit var homeViewModel: MasterViewModel
 
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        dashboardViewModel =
-                ViewModelProviders.of(this).get(DashboardViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_dashboard, container, false)
-        val textView: TextView = root.findViewById(R.id.text_dashboard)
-        dashboardViewModel.text.observe(viewLifecycleOwner, Observer {
+        homeViewModel =
+                ViewModelProviders.of(this).get(MasterViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_home, container, false)
+        val textView: TextView = root.findViewById(R.id.text_home)
+        homeViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
         return root
