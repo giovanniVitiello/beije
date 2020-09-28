@@ -1,20 +1,14 @@
-package com.metiswebdev.veronacalcio.main
+package com.example.beije
 
-import com.metiswebdev.veronacalcio.main.network.Backend
 import io.reactivex.rxjava3.core.Single
 
 interface Contract {
-    fun getNewsData(): Single<List<NewsResponse>>
-    fun getDetailNewsData(id: Int): Single<DetailNewsResponse>
+    fun getData(): Single<List<MonclairResponse>>
 }
 
 class Provider(private val backend: Backend) : Contract {
-    override fun getNewsData(): Single<List<NewsResponse>> {
+    override fun getData(): Single<List<MonclairResponse>> {
         return backend.getNewsData()
-    }
-
-    override fun getDetailNewsData(id: Int): Single<DetailNewsResponse> {
-        return backend.getDetailNewsData(id)
     }
 
 }

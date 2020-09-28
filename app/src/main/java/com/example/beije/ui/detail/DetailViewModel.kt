@@ -1,9 +1,7 @@
 package com.example.beije.ui.detail
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import com.metiswebdev.veronacalcio.main.Contract
+import com.example.beije.Contract
+import com.example.beije.utils.exhaustive
 import com.nrc.snr.base.BaseViewModel
 import io.reactivex.rxjava3.core.Scheduler
 import io.reactivex.rxjava3.disposables.Disposable
@@ -14,7 +12,7 @@ sealed class DetailEvent {
 
 sealed class DetailState {
     object InProgressNews : DetailState()
-    data class LoadedNews(val newsDetail: DetailNewsResponse) : DetailState()
+    data class LoadedNews(val newsDetail: MonclairResponse) : DetailState()
     data class Error(val error: Throwable) : DetailState()
 }
 
@@ -26,14 +24,14 @@ class DetailViewModel(
 
     override fun send(event: DetailEvent) {
         when (event) {
-            is DetailEvent.LoadDetailNews -> loadDetailNews(event.id)
+            is DetailEvent.LoadDetailNews -> loadDetailData(event.id)
         }.exhaustive
     }
 
-    private fun loadDetailNews(id: Int) {
+    private fun loadDetailData(id: Int) {
         if (newsSubscription.isDisposed) {
             post(DetailState.InProgressNews)
-            newsSubscription = contract.getDetailNewsData(id)
+            newsSubscription = contract.getData()
                 .observeOn(scheduler)
                 .subscribe(
                     { newsDetail -> post(DetailState.LoadedNews(newsDetail)) },

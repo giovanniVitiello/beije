@@ -1,12 +1,12 @@
-package com.metiswebdev.veronacalcio.di
+package com.example.beije.di
 
 import com.example.beije.ui.detail.DetailViewModel
 import com.example.beije.ui.master.MasterViewModel
-import com.metiswebdev.veronacalcio.main.Contract
-import com.metiswebdev.veronacalcio.main.Provider
-import com.metiswebdev.veronacalcio.main.network.Backend
-import com.metiswebdev.veronacalcio.utils.AppNavigator
-import com.metiswebdev.veronacalcio.utils.Navigator
+import com.example.beije.Contract
+import com.example.beije.Provider
+import com.example.beije.Backend
+import com.example.beije.utils.AppNavigator
+import com.example.beije.utils.Navigator
 import com.google.gson.*
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import org.koin.android.ext.koin.androidContext
