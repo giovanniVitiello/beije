@@ -38,7 +38,6 @@ val viewModels = module {
             contract = get()
         )
     }
-
 }
 
 private fun createGson(): Gson = GsonBuilder().create()
