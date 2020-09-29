@@ -2,27 +2,19 @@ package com.example.beije.ui.master
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.Toolbar
-import androidx.core.content.ContextCompat
-import androidx.core.graphics.BlendModeColorFilterCompat
-import androidx.core.graphics.BlendModeCompat
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.beije.MainActivity
+import com.example.beije.ui.MainActivity
 import com.example.beije.R
 import com.example.beije.databinding.MasterScreenBinding
-import com.example.beije.response.Content
+import com.example.beije.databinding.ToolbarWithTitleBinding
 import com.example.beije.response.MonclairObjectResponse
 import com.example.beije.utils.Navigator
 import com.example.beije.utils.exhaustive
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.master_screen.*
 import org.koin.android.ext.android.inject
 import timber.log.Timber
 
@@ -31,7 +23,7 @@ class MasterScreen : Fragment() {
     private val masterViewModel: MasterViewModel by inject()
     private val navigator: Navigator by inject()
     private lateinit var binding: MasterScreenBinding
-    private lateinit var toolbarBinding: androidx.appcompat.widget.Toolbar
+    private lateinit var toolbarBinding: ToolbarWithTitleBinding
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
@@ -49,7 +41,7 @@ class MasterScreen : Fragment() {
 
     private fun setupToolbar() {
         (activity as MainActivity?)?.supportActionBar?.hide()
-        toolbarBinding.title = "Title Toolbar"
+        toolbarBinding.toolbarMain.title = "Title Toolbar"
     }
 
     private fun observeMasterViewModel() {
@@ -63,8 +55,9 @@ class MasterScreen : Fragment() {
     }
 
     private fun showTitleObject(titleObject: MonclairObjectResponse) {
+        binding.progressBarMain.visibility = View.GONE
         val contentList = titleObject.content
-        binding.recyclerNewsList.apply {
+        binding.recyclerDataList.apply {
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(this@MasterScreen.requireContext(), LinearLayoutManager.VERTICAL, false)
             adapter = MasterAdapter(contentList, navigator)

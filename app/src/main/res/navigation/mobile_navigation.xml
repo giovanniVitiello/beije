@@ -9,7 +9,11 @@
         android:id="@+id/navigation_master"
         android:name="com.example.beije.ui.master.MasterScreen"
         android:label="@string/title_master"
-        tools:layout="@layout/master_screen" />
+        tools:layout="@layout/master_screen" >
+        <action
+            android:id="@+id/action_navigation_master_to_navigation_detail"
+            app:destination="@id/navigation_detail" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_detail"
