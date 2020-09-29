@@ -7,12 +7,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.beije.ui.MainActivity
 import com.example.beije.R
 import com.example.beije.databinding.MasterScreenBinding
 import com.example.beije.databinding.ToolbarWithTitleBinding
 import com.example.beije.response.MonclairObjectResponse
-import com.example.beije.utils.Navigator
+import com.example.beije.ui.MainActivity
 import com.example.beije.utils.exhaustive
 import com.google.android.material.snackbar.Snackbar
 import org.koin.android.ext.android.inject
@@ -21,7 +20,6 @@ import timber.log.Timber
 class MasterScreen : Fragment() {
 
     private val masterViewModel: MasterViewModel by inject()
-    private val navigator: Navigator by inject()
     private lateinit var binding: MasterScreenBinding
     private lateinit var toolbarBinding: ToolbarWithTitleBinding
 
@@ -37,6 +35,12 @@ class MasterScreen : Fragment() {
         setupToolbar()
         masterViewModel.send(MasterEvent.LoadData)
         observeMasterViewModel()
+
+        binding.pullToRefresh.setOnRefreshListener {
+            masterViewModel.send(MasterEvent.LoadData) // refreshes the WebView
+            binding.progressBarMain.visibility = View.GONE
+            binding.pullToRefresh.isRefreshing = false
+        }
     }
 
     private fun setupToolbar() {
@@ -59,8 +63,8 @@ class MasterScreen : Fragment() {
         val contentList = titleObject.content
         binding.recyclerDataList.apply {
             setHasFixedSize(true)
-            layoutManager = LinearLayoutManager(this@MasterScreen.requireContext(), LinearLayoutManager.VERTICAL, false)
-            adapter = MasterAdapter(contentList, navigator)
+            layoutManager = LinearLayoutManager(this@MasterScreen.requireContext())
+            adapter = MasterAdapter(contentList)
         }
     }
 

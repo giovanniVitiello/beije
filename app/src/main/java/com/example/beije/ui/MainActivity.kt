@@ -7,13 +7,17 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.beije.R
-import kotlinx.android.synthetic.main.activity_main.*
+import com.example.beije.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
 
         setupViews()
 
@@ -25,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment)
 
         // Setting Navigation Controller with the BottomNavigationView
-        nav_view.setupWithNavController(navController)
+        binding.navView.setupWithNavController(navController)
 
         // Pass the IDs of top-level destinations in AppBarConfiguration
         val appBarConfiguration = AppBarConfiguration(
