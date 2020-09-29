@@ -16,7 +16,7 @@ import java.util.*
 
 const val CONTENT_ITEM = "CONTENT_ITEM"
 
-class MasterAdapter(private val content: List<Content>, private val gson: Gson) : RecyclerView.Adapter<DataViewHolder>() {
+class MasterAdapter(private val content: MutableList<Content>, private val gson: Gson) : RecyclerView.Adapter<DataViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DataViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_master_card, parent, false)
         return DataViewHolder(view)

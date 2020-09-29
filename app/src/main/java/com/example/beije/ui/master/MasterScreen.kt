@@ -7,12 +7,15 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.beije.R
 import com.example.beije.databinding.MasterScreenBinding
 import com.example.beije.databinding.ToolbarWithTitleBinding
 import com.example.beije.response.MonclairObjectResponse
 import com.example.beije.ui.MainActivity
+import com.example.beije.utils.SwipeToDeleteCallback
 import com.example.beije.utils.exhaustive
 import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
@@ -40,7 +43,7 @@ class MasterScreen : Fragment() {
         observeMasterViewModel()
 
         binding.pullToRefresh.setOnRefreshListener {
-            binding.recyclerDataList.adapter = MasterAdapter(emptyList(), gson)
+            binding.recyclerDataList.adapter = MasterAdapter(mutableListOf(), gson)
             masterViewModel.send(MasterEvent.LoadData) // refreshes the WebView
             binding.pullToRefresh.isRefreshing = false
         }
@@ -65,12 +68,21 @@ class MasterScreen : Fragment() {
 
     private fun showTitleObject(titleObject: MonclairObjectResponse) {
         binding.progressBarMain.visibility = View.GONE
-        val contentList = titleObject.content
+        val contentList = titleObject.content.toMutableList()
         binding.recyclerDataList.apply {
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(this@MasterScreen.requireContext())
             adapter = MasterAdapter(contentList, gson)
         }
+        val swipeHandler = object : SwipeToDeleteCallback(this@MasterScreen.requireContext()) {
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                contentList.removeAt(viewHolder.adapterPosition)
+                binding.recyclerDataList.adapter?.notifyDataSetChanged()
+            }
+        }
+        val itemTouchHelper = ItemTouchHelper(swipeHandler)
+        itemTouchHelper.attachToRecyclerView(binding.recyclerDataList)
+
     }
 
     private fun showProgressBar() {
