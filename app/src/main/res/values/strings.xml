@@ -2,6 +2,7 @@
     <string name="app_name">Beije</string>
     <string name="base_url">https://www.monclergroup.com/</string>
     <string name="network_error">Errore di rete, Riprova più tardi!</string>
+    <string name="object_title">Object Title</string>
     <string name="retry">Riprova</string>
     <string name="title_master">Master</string>
     <string name="title_detail">Detail</string>

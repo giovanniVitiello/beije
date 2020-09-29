@@ -1,12 +1,14 @@
 package com.example.beije.response
 
+import android.os.Parcelable
+
 data class MonclairObjectResponse(
     val content: List<Content>,
     val lang: String,
     val status: Boolean
 )
 
-data class Content(
+data class Content (
     val mediaDate: MediaDate,
     val mediaId: Int,
     val mediaTitleCustom: String,

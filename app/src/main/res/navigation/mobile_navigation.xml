@@ -19,6 +19,9 @@
         android:id="@+id/navigation_detail"
         android:name="com.example.beije.ui.detail.DetailScreen"
         android:label="@string/title_detail"
-        tools:layout="@layout/detail_screen" />
+        tools:layout="@layout/detail_screen" >
+        <argument
+            android:name="content" />
+    </fragment>
 
 </navigation>
