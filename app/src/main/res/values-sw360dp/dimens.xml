@@ -1,0 +1,24 @@
+<resources>
+
+    <!-- Standard dimensions for text-->
+    <dimen name="mgrt_text_size_title_big">32sp</dimen>
+    <dimen name="mgrt_text_size_title">22sp</dimen>
+    <dimen name="mgrt_text_size_bigger">18sp</dimen>
+    <dimen name="mgrt_text_size_default">16sp</dimen>
+    <dimen name="mgrt_text_size_small">14sp</dimen>
+    <dimen name="mgrt_text_size_smaller">12sp</dimen>
+    <dimen name="edit_fab_size">40dp</dimen>
+
+    <!-- Standard dimensions for margins -->
+    <dimen name="mgrt_margin_xxxbig">88dp</dimen>
+    <dimen name="mgrt_margin_xxbig">64dp</dimen>
+    <dimen name="mgrt_margin_xbig">40dp</dimen>
+    <dimen name="mgrt_margin_verybig">32dp</dimen>
+    <dimen name="mgrt_margin_big">24dp</dimen>
+    <dimen name="mgrt_margin_bigger">20dp</dimen>
+    <dimen name="mgrt_margin_default">16dp</dimen>
+    <dimen name="mgrt_margin_small">12dp</dimen>
+    <dimen name="mgrt_margin_smaller">8dp</dimen>
+    <dimen name="mgrt_margin_very_small">4dp</dimen>
+
+</resources>

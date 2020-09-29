@@ -3,9 +3,11 @@
     <string name="base_url">https://www.monclergroup.com/</string>
     <string name="network_error">Errore di rete, Riprova più tardi!</string>
     <string name="object_title">Object Title</string>
+    <string name="object_detail">Object Detail</string>
     <string name="retry">Riprova</string>
-    <string name="title_master">Master</string>
-    <string name="title_detail">Detail</string>
+    <string name="master">Master</string>
+    <string name="detail">Detail</string>
     <string name="title_object">title</string>
-    <string name="title_toolbar">title toolbar</string>
+    <string name="default_value">Nessun oggetto selezionato.\nSi prega di selezionare\nun elemento dalla lista per\nvisualizzarne il dettaglio</string>
+    <string name="link_object">link object</string>
 </resources>

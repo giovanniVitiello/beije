@@ -44,10 +44,4 @@ class DataViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
             itemView.findNavController().navigate(MasterScreenDirections.actionNavigationMasterToNavigationDetail(bundle))
         }
     }
-
-    private fun convertLongToTime(time: Long): String {
-        val date = Date(time.times(1000))
-        val format = SimpleDateFormat("dd.MM.yyyy", Locale.getDefault())
-        return format.format(date)
-    }
 }

@@ -6,12 +6,72 @@
     android:layout_height="match_parent"
     tools:context=".ui.detail.DetailScreen">
 
-    <TextView
-        android:id="@+id/text_detail"
+    <include
+        android:id="@+id/main_toolbar"
+        layout="@layout/toolbar_with_title" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardObject"
+        style="@style/NewsCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:cardCornerRadius="@dimen/card_radius_default"
+        app:layout_constraintTop_toBottomOf="@id/main_toolbar">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+
+            <TextView
+                android:id="@+id/title_detail_object"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="18dp"
+                tools:text="@string/title_object"
+                android:textAlignment="center"
+                android:textColor="@color/dark_blue"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/link_detail_object"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="18dp"
+                tools:text="@string/link_object"
+                android:textAlignment="center"
+                android:autoLink="web"
+                android:textSize="14sp"
+                android:textColor="@color/dark_blue"
+                android:layout_below="@id/title_detail_object"/>
+
+            <TextView
+                android:id="@+id/data_detail_object"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="18dp"
+                android:text="@string/title_object"
+                android:textAlignment="viewStart"
+                android:textSize="10sp"
+                android:textColor="@color/grey"
+                android:layout_below="@id/link_detail_object"
+                tools:ignore="SmallSp" />
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/placeholder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/default_value"
         android:textAlignment="center"
         android:textSize="20sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
