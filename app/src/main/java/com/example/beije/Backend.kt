@@ -34,12 +34,12 @@ class Backend(
         .build()
         .create(ListingApi::class.java)
 
-    fun getData(): Single<List<MonclairObjectResponse>> = api.getData()
+    fun getData(): Single<MonclairObjectResponse> = api.getData()
 
     private interface ListingApi {
 
         @GET("wp-json/mobileApp/v1/getPressReleasesDocs/")
-        fun getData(): Single<List<MonclairObjectResponse>>
+        fun getData(): Single<MonclairObjectResponse>
 
     }
 }
