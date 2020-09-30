@@ -1,13 +1,14 @@
 package com.example.beije.ui.detail
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.text.SpannableString
 import android.transition.TransitionInflater
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.WebViewClient
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.beije.R
@@ -17,6 +18,9 @@ import com.example.beije.response.Content
 import com.example.beije.ui.MainActivity
 import com.google.gson.Gson
 import org.koin.android.ext.android.inject
+import java.text.DateFormat
+import java.text.SimpleDateFormat
+import java.util.*
 import java.util.concurrent.TimeUnit
 
 class DetailScreen : Fragment() {
@@ -25,7 +29,6 @@ class DetailScreen : Fragment() {
     private lateinit var binding: DetailScreenBinding
     private lateinit var contentObject: Content
     private lateinit var toolbarBinding: ToolbarWithTitleBinding
-    private lateinit var linkPdf: SpannableString
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
@@ -33,7 +36,6 @@ class DetailScreen : Fragment() {
         toolbarBinding = binding.mainToolbar
 
         showDetail()
-
         return binding.root
     }
 
@@ -43,19 +45,30 @@ class DetailScreen : Fragment() {
         contentObject = gson.fromJson(args.content, Content::class.java)
         binding.titleDetailObject.text = contentObject.mediaTitleCustom
         binding.dataDetailObject.text = convertStringToData(contentObject.mediaDate.dateString)
+
+        loadPreviewPdf()
         binding.linkDetailObject.setOnClickListener {
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(contentObject.mediaUrl))
             startActivity(intent)
         }
     }
 
+    @SuppressLint("SetJavaScriptEnabled")
+    private fun loadPreviewPdf() {
+        binding.webView.webViewClient = WebViewClient()
+        binding.webView.settings.javaScriptEnabled = true
+        binding.webView.postDelayed(
+            { binding.webView.loadUrl(resources.getString(R.string.google_drive_url) + contentObject.mediaUrl) },
+            500
+        )
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        sharedElementEnterTransition = TransitionInflater.from(context).inflateTransition(android.R.transition.explode)
+        sharedElementEnterTransition = TransitionInflater.from(context).inflateTransition(android.R.transition.slide_right)
         postponeEnterTransition(250, TimeUnit.MILLISECONDS)
         setupToolbar()
-
     }
 
     private fun setupToolbar() {
@@ -66,6 +79,10 @@ class DetailScreen : Fragment() {
     }
 
     private fun convertStringToData(dataString: String): String {
-        return dataString.substring(0, 16)
+        val inputFormatter: DateFormat = SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss Z", Locale.ENGLISH)//Mon, 27 Jul 2020 00:00:00 +0000
+        val date = inputFormatter.parse(dataString)
+
+        val outputFormatter: DateFormat = SimpleDateFormat("EEE, dd MMM yyyy", Locale.getDefault())
+        return outputFormatter.format(date ?: "")
     }
 }

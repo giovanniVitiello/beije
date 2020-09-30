@@ -24,14 +24,16 @@
             android:id="@+id/cardObject"
             style="@style/NewsCard"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/mgrt_margin_doublexxbig"
+            android:layout_marginBottom="@dimen/mgrt_margin_xxbig"
             android:backgroundTint="@color/white_40"
             app:cardCornerRadius="@dimen/card_radius_default"
             app:layout_constraintTop_toBottomOf="@id/main_toolbar">
 
             <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
                 <TextView
                     android:id="@+id/data_detail_object"
@@ -56,14 +58,21 @@
                     android:text="@string/title_object"
                     tools:text="@string/title_object" />
 
+                <WebView
+                    android:id="@+id/web_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/title_detail_object"
+                    android:layout_above="@id/link_detail_object"
+                    android:layout_margin="12dp"/>
+
                 <TextView
                     android:id="@+id/link_detail_object"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="18dp"
-                    android:layout_below="@id/title_detail_object"
-                    android:text="@string/visualizza"
-                    android:textAlignment="viewStart"
+                    android:layout_alignParentBottom="true"
+                    android:text="@string/show"
                     android:textColor="@color/red"
                     android:textAllCaps="true"
                     android:textSize="14sp" />
