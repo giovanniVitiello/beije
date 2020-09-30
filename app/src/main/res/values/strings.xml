@@ -8,6 +8,5 @@
     <string name="master">Master</string>
     <string name="detail">Detail</string>
     <string name="title_object">title</string>
-    <string name="default_value">Nessun oggetto selezionato.\nSi prega di selezionare\nun elemento dalla lista per\nvisualizzarne il dettaglio</string>
     <string name="link_object">link object</string>
 </resources>

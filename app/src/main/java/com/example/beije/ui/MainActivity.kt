@@ -1,6 +1,7 @@
 package com.example.beije.ui
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -33,10 +34,7 @@ class MainActivity : AppCompatActivity() {
 
         // Pass the IDs of top-level destinations in AppBarConfiguration
         val appBarConfiguration = AppBarConfiguration(
-            topLevelDestinationIds = setOf (
-                R.id.navigation_master,
-                R.id.navigation_detail
-            )
+            topLevelDestinationIds = setOf (R.id.navigation_master, R.id.navigation_detail)
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
     }

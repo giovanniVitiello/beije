@@ -2,7 +2,6 @@ package com.example.beije.ui.master
 
 import com.example.beije.Contract
 import com.example.beije.response.MonclairObjectResponse
-import com.example.beije.ui.detail.DetailState
 import com.example.beije.utils.exhaustive
 import com.nrc.snr.base.BaseViewModel
 import io.reactivex.rxjava3.core.Scheduler

@@ -1,16 +1,11 @@
 package com.example.beije.ui.detail
 
-import android.os.Build
 import android.os.Bundle
 import android.text.SpannableString
-import android.text.Spanned
-import android.text.TextPaint
-import android.text.method.LinkMovementMethod
-import android.text.style.URLSpan
+import android.transition.TransitionInflater
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.beije.R
@@ -20,6 +15,7 @@ import com.example.beije.response.Content
 import com.example.beije.ui.MainActivity
 import com.google.gson.Gson
 import org.koin.android.ext.android.inject
+import java.util.concurrent.TimeUnit
 
 class DetailScreen : Fragment() {
 
@@ -42,19 +38,18 @@ class DetailScreen : Fragment() {
 
     private fun showDetail() {
         val args = DetailScreenArgs.fromBundle(requireArguments())
-        if (args.content == resources.getString(R.string.default_value)) {
-            binding.placeholder.visibility = View.VISIBLE
-            binding.cardObject.visibility = View.GONE
-        } else {
-            contentObject = gson.fromJson(args.content, Content::class.java)
-            binding.titleDetailObject.text = contentObject.mediaTitleCustom
-            binding.dataDetailObject.text = convertStringToData(contentObject.mediaDate.dateString)
-            binding.linkDetailObject.text = contentObject.mediaUrl
-        }
+
+        contentObject = gson.fromJson(args.content, Content::class.java)
+        binding.titleDetailObject.text = contentObject.mediaTitleCustom
+        binding.dataDetailObject.text = convertStringToData(contentObject.mediaDate.dateString)
+        binding.linkDetailObject.text = contentObject.mediaUrl
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        sharedElementEnterTransition = TransitionInflater.from(context).inflateTransition(android.R.transition.explode)
+        postponeEnterTransition(250, TimeUnit.MILLISECONDS)
         setupToolbar()
 
     }

@@ -12,7 +12,9 @@
         tools:layout="@layout/master_screen" >
         <action
             android:id="@+id/action_navigation_master_to_navigation_detail"
-            app:destination="@id/navigation_detail" />
+            app:destination="@id/navigation_detail"
+            app:enterAnim="@anim/from_right"
+            app:popExitAnim="@android:anim/slide_out_right" />
     </fragment>
 
     <fragment
@@ -22,8 +24,8 @@
         tools:layout="@layout/detail_screen" >
         <argument
             android:name="content"
-            app:argType="string"
-            android:defaultValue="Nessun oggetto selezionato.\nSi prega di selezionare\nun elemento dalla lista per\nvisualizzarne il dettaglio" />
+            app:argType="string" />
+
     </fragment>
 
 </navigation>
