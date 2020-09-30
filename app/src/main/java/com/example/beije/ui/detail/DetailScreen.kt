@@ -54,6 +54,11 @@ class DetailScreen : Fragment() {
 
         loadPreviewPdf()
         binding.linkDetailObject.setOnClickListener {
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(resources.getString(R.string.google_drive_url) + contentObject.mediaUrl))
+            startActivity(intent)
+        }
+
+        binding.downloadPdf.setOnClickListener {
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(contentObject.mediaUrl))
             startActivity(intent)
         }

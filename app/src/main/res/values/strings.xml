@@ -2,7 +2,7 @@
     <string name="app_name">Beije</string>
     <string name="base_url">https://www.monclergroup.com/</string>
     <string name="detail">Detail</string>
-    <string name="google_drive_url">https://docs.google.com/viewer?embedded=true&amp;url=</string>
+    <string name="google_drive_url">https://docs.google.com/gview?embedded=true&amp;url=</string>
     <string name="link_object">link object</string>
     <string name="master">Master</string>
     <string name="network_error">Errore di rete, Riprova più tardi!</string>
@@ -11,5 +11,6 @@
     <string name="retry">Riprova</string>
     <string name="title_object">title</string>
     <string name="title_data">Mon, 27 Lug 2020</string>
-    <string name="show">visualizza</string>
+    <string name="show_in_web">visualizza in web</string>
+    <string name="show_pdf_reader">visualizza pdf</string>
 </resources>

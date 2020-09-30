@@ -78,7 +78,19 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="18dp"
                     android:layout_alignParentBottom="true"
-                    android:text="@string/show"
+                    android:text="@string/show_in_web"
+                    android:textColor="@color/red"
+                    android:textAllCaps="true"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/download_pdf"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="18dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:text="@string/show_pdf_reader"
                     android:textColor="@color/red"
                     android:textAllCaps="true"
                     android:textSize="14sp" />
