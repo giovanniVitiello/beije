@@ -99,11 +99,11 @@ class DetailScreen : Fragment() {
         toolbarBinding.toolbarMain.setBackgroundColor(ContextCompat.getColor(this@DetailScreen.requireContext(), R.color.grey))
     }
 
-    private fun convertStringToData(dataString: String): String {
+    fun convertStringToData(dataString: String, locale: Locale = Locale.getDefault()): String {
         val inputFormatter: DateFormat = SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss Z", Locale.ENGLISH)//Mon, 27 Jul 2020 00:00:00 +0000
         val date = inputFormatter.parse(dataString)
 
-        val outputFormatter: DateFormat = SimpleDateFormat("EEE, dd MMM yyyy", Locale.getDefault())
+        val outputFormatter: DateFormat = SimpleDateFormat("EEE, dd MMM yyyy", locale)
         return outputFormatter.format(date ?: "")
     }
 }
