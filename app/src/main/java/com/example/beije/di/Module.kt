@@ -1,6 +1,6 @@
 package com.example.beije.di
 
-import com.example.beije.ui.master.HomeViewModel
+import com.example.beije.ui.home.HomeViewModel
 import com.example.beije.Contract
 import com.example.beije.Provider
 import com.example.beije.Backend

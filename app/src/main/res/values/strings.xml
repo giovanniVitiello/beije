@@ -6,8 +6,8 @@
     <string name="link_object">link object</string>
     <string name="master">Master</string>
     <string name="network_error">Errore di rete, Riprova più tardi!</string>
-    <string name="news">News</string>
-    <string name="object_detail">Object Detail</string>
+    <string name="news">News Monclair</string>
+    <string name="object_detail">Detail News</string>
     <string name="retry">Riprova</string>
     <string name="title_object">title</string>
     <string name="title_data">Mon, 27 Lug 2020</string>

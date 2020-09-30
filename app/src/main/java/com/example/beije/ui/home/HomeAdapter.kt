@@ -1,4 +1,4 @@
-package com.example.beije.ui.master
+package com.example.beije.ui.home
 
 import android.view.LayoutInflater
 import android.view.View

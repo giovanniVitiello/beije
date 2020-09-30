@@ -1,4 +1,4 @@
-package com.example.beije.ui.master
+package com.example.beije.ui.home
 
 import com.example.beije.Contract
 import com.example.beije.response.MonclairObjectResponse

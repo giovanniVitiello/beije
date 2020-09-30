@@ -24,8 +24,9 @@
             android:textColor="@color/black"/>
 
         <ImageView
-            android:layout_width="38dp"
-            android:layout_height="38dp"
+            android:layout_width="@dimen/mgrt_margin_xbig"
+            android:layout_height="@dimen/mgrt_margin_xbig"
+            android:scaleType="centerCrop"
             android:layout_marginEnd="@dimen/mgrt_margin_bigger"
             android:layout_gravity="end"
             android:src="@drawable/monclair"

@@ -13,7 +13,7 @@
     <dimen name="mgrt_margin_doublexxbig">128dp</dimen>
     <dimen name="mgrt_margin_xxxbig">88dp</dimen>
     <dimen name="mgrt_margin_xxbig">64dp</dimen>
-    <dimen name="mgrt_margin_xbig">40dp</dimen>
+    <dimen name="mgrt_margin_xbig">44dp</dimen>
     <dimen name="mgrt_margin_verybig">32dp</dimen>
     <dimen name="mgrt_margin_big">24dp</dimen>
     <dimen name="mgrt_margin_bigger">20dp</dimen>
