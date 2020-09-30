@@ -53,12 +53,7 @@ class DetailScreen : Fragment() {
         binding.dataDetailObject.text = convertStringToData(contentObject.mediaDate.dateString)
 
         loadPreviewPdf()
-        binding.linkDetailObject.setOnClickListener {
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(resources.getString(R.string.google_drive_url) + contentObject.mediaUrl))
-            startActivity(intent)
-        }
-
-        binding.downloadPdf.setOnClickListener {
+        binding.showPdf.setOnClickListener {
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(contentObject.mediaUrl))
             startActivity(intent)
         }
