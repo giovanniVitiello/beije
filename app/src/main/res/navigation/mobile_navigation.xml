@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/navigation_master"
-        android:name="com.example.beije.ui.master.MasterScreen"
+        android:name="com.example.beije.ui.master.HomeScreen"
         android:label="@string/master"
         tools:layout="@layout/master_screen" >
         <action

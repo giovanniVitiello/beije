@@ -1,5 +1,7 @@
 package com.example.beije.ui.detail
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.text.SpannableString
 import android.transition.TransitionInflater
@@ -19,7 +21,6 @@ import java.util.concurrent.TimeUnit
 
 class DetailScreen : Fragment() {
 
-    private val detailViewModel: DetailViewModel by inject()
     private val gson: Gson by inject()
     private lateinit var binding: DetailScreenBinding
     private lateinit var contentObject: Content
@@ -42,7 +43,10 @@ class DetailScreen : Fragment() {
         contentObject = gson.fromJson(args.content, Content::class.java)
         binding.titleDetailObject.text = contentObject.mediaTitleCustom
         binding.dataDetailObject.text = convertStringToData(contentObject.mediaDate.dateString)
-        binding.linkDetailObject.text = contentObject.mediaUrl
+        binding.linkDetailObject.setOnClickListener {
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(contentObject.mediaUrl))
+            startActivity(intent)
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

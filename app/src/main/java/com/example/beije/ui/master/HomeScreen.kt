@@ -26,16 +26,16 @@ import org.koin.android.ext.android.inject
 import timber.log.Timber
 
 
-class MasterScreen : Fragment() {
+class HomeScreen : Fragment() {
 
-    private val masterViewModel: MasterViewModel by inject()
+    private val homeViewModel: HomeViewModel by inject()
     private val gson: Gson by inject()
     private lateinit var binding: MasterScreenBinding
     private lateinit var toolbarBinding: ToolbarWithTitleBinding
 
-    private val newsItemListener = MasterAdapter.OnClickListener { content ->
+    private val newsItemListener = HomeAdapter.OnClickListener { content ->
         val bundle = gson.toJson(content)
-        val direction: NavDirections = MasterScreenDirections.actionNavigationMasterToNavigationDetail(bundle)
+        val direction: NavDirections = HomeScreenDirections.actionNavigationMasterToNavigationDetail(bundle)
         findNavController().navigate(direction)
     }
 
@@ -50,12 +50,12 @@ class MasterScreen : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setupToolbar()
 
-        masterViewModel.send(MasterEvent.LoadData)
+        homeViewModel.send(HomeEvent.LoadData)
         observeMasterViewModel()
 
         binding.pullToRefresh.setOnRefreshListener {
-            binding.recyclerDataList.adapter = MasterAdapter(mutableListOf(), newsItemListener)
-            masterViewModel.send(MasterEvent.LoadData)
+            binding.recyclerDataList.adapter = HomeAdapter(mutableListOf(), newsItemListener)
+            homeViewModel.send(HomeEvent.LoadData)
             binding.pullToRefresh.isRefreshing = false
         }
     }
@@ -63,16 +63,16 @@ class MasterScreen : Fragment() {
     private fun setupToolbar() {
         (activity as MainActivity?)?.supportActionBar?.hide()
         toolbarBinding.toolbarMain.title = getString(R.string.news)
-        toolbarBinding.toolbarMain.setTitleTextColor(ContextCompat.getColor(this@MasterScreen.requireContext(), R.color.white))
-        toolbarBinding.toolbarMain.setBackgroundColor(ContextCompat.getColor(this@MasterScreen.requireContext(), R.color.grey))
+        toolbarBinding.toolbarMain.setTitleTextColor(ContextCompat.getColor(this@HomeScreen.requireContext(), R.color.white))
+        toolbarBinding.toolbarMain.setBackgroundColor(ContextCompat.getColor(this@HomeScreen.requireContext(), R.color.grey))
     }
 
     private fun observeMasterViewModel() {
-        masterViewModel.observe(lifecycleScope) {
+        homeViewModel.observe(lifecycleScope) {
             when (it) {
-                is MasterState.InProgress -> showProgressBar()
-                is MasterState.LoadedData -> showTitleObject(it.data)
-                is MasterState.Error -> showError(it.error.message.toString())
+                is HomeState.InProgress -> showProgressBar()
+                is HomeState.LoadedData -> showTitleObject(it.data)
+                is HomeState.Error -> showError(it.error.message.toString())
             }.exhaustive
         }
     }
@@ -82,15 +82,15 @@ class MasterScreen : Fragment() {
         val contentList = titleObject.content.toMutableList()
         binding.recyclerDataList.apply {
             setHasFixedSize(true)
-            layoutManager = LinearLayoutManager(this@MasterScreen.requireContext())
-            adapter = MasterAdapter(contentList, newsItemListener)
+            layoutManager = LinearLayoutManager(this@HomeScreen.requireContext())
+            adapter = HomeAdapter(contentList, newsItemListener)
         }
 
         swipeToDelete(contentList)
     }
 
     private fun swipeToDelete(contentList: MutableList<Content>) {
-        val swipeHandler = object : SwipeToDeleteCallback(this@MasterScreen.requireContext()) {
+        val swipeHandler = object : SwipeToDeleteCallback(this@HomeScreen.requireContext()) {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 contentList.removeAt(viewHolder.adapterPosition)
                 binding.recyclerDataList.adapter?.notifyDataSetChanged()
@@ -113,7 +113,7 @@ class MasterScreen : Fragment() {
     private fun showSnackBarRetry() {
         Snackbar.make(binding.mainConstraintLayout, resources.getString(R.string.network_error), Snackbar.LENGTH_INDEFINITE)
             .setAction(resources.getString(R.string.retry)) {
-                masterViewModel.send(MasterEvent.LoadData)
+                homeViewModel.send(HomeEvent.LoadData)
             }
             .show()
     }

@@ -20,10 +20,6 @@
     <style name="NewsCard">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginStart">@dimen/mgrt_margin_default</item>
-        <item name="android:layout_marginTop">@dimen/mgrt_margin_smaller</item>
-        <item name="android:layout_marginEnd">@dimen/mgrt_margin_default</item>
-        <item name="android:layout_marginBottom">@dimen/mgrt_margin_smaller</item>
         <item name="android:padding">@dimen/mgrt_margin_smaller</item>
     </style>
 

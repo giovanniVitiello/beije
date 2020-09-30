@@ -9,13 +9,13 @@
         android:scaleType="centerCrop"
         android:src="@drawable/monclair_green" />
 
-    <RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    <RelativeLayout
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/main_constraint_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        tools:context=".ui.master.MasterScreen">
+        tools:context=".ui.master.HomeScreen">
 
         <include
             android:id="@+id/main_toolbar"
@@ -31,6 +31,8 @@
             android:id="@+id/pullToRefresh"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/mgrt_margin_xxbig"
+            android:layout_marginBottom="@dimen/mgrt_margin_xxbig"
             android:layout_below="@+id/main_toolbar">
 
             <androidx.recyclerview.widget.RecyclerView

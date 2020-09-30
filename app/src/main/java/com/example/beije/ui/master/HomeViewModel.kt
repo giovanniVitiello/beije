@@ -7,37 +7,37 @@ import com.nrc.snr.base.BaseViewModel
 import io.reactivex.rxjava3.core.Scheduler
 import io.reactivex.rxjava3.disposables.Disposable
 
-sealed class MasterEvent {
-    object LoadData : MasterEvent()
+sealed class HomeEvent {
+    object LoadData : HomeEvent()
 }
 
-sealed class MasterState {
-    object InProgress : MasterState()
-    data class LoadedData(val data: MonclairObjectResponse) : MasterState()
-    data class Error(val error: Throwable) : MasterState()
+sealed class HomeState {
+    object InProgress : HomeState()
+    data class LoadedData(val data: MonclairObjectResponse) : HomeState()
+    data class Error(val error: Throwable) : HomeState()
 }
 
-class MasterViewModel(
+class HomeViewModel(
     private val scheduler: Scheduler,
     private val contract: Contract
-) : BaseViewModel<MasterState, MasterEvent>(){
+) : BaseViewModel<HomeState, HomeEvent>(){
 
     private var dataSubscription = Disposable.disposed()
 
-    override fun send(event: MasterEvent) {
+    override fun send(event: HomeEvent) {
         when (event) {
-            is MasterEvent.LoadData -> loadDetailData()
+            is HomeEvent.LoadData -> loadDetailData()
         }.exhaustive
     }
 
     private fun loadDetailData() {
         if (dataSubscription.isDisposed) {
-            post(MasterState.InProgress)
+            post(HomeState.InProgress)
             dataSubscription = contract.getData()
                 .observeOn(scheduler)
                 .subscribe(
-                    { data -> post(MasterState.LoadedData(data)) },
-                    { error -> post(MasterState.Error(error)) }
+                    { data -> post(HomeState.LoadedData(data)) },
+                    { error -> post(HomeState.Error(error)) }
                 )
             disposables.add(dataSubscription)
         }

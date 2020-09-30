@@ -1,7 +1,6 @@
 package com.example.beije.di
 
-import com.example.beije.ui.detail.DetailViewModel
-import com.example.beije.ui.master.MasterViewModel
+import com.example.beije.ui.master.HomeViewModel
 import com.example.beije.Contract
 import com.example.beije.Provider
 import com.example.beije.Backend
@@ -24,13 +23,7 @@ val appComponents = module {
 
 val viewModels = module {
     viewModel {
-        MasterViewModel(
-            scheduler = AndroidSchedulers.mainThread(),
-            contract = get()
-        )
-    }
-    viewModel {
-        DetailViewModel(
+        HomeViewModel(
             scheduler = AndroidSchedulers.mainThread(),
             contract = get()
         )
