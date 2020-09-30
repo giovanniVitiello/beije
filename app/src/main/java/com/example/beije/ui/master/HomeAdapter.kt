@@ -15,13 +15,9 @@ class HomeAdapter(private val content: MutableList<Content>, private val onClick
         return DataViewHolder(view)
     }
 
-    override fun getItemCount(): Int {
-        return content.size
-    }
+    override fun getItemCount(): Int = content.size
 
-    override fun onBindViewHolder(holder: DataViewHolder, position: Int) {
-        return holder.bind(content[position], onClickListener)
-    }
+    override fun onBindViewHolder(holder: DataViewHolder, position: Int) = holder.bind(content[position], onClickListener)
 
     class OnClickListener(val clickListener: (Content) -> Unit) {
         fun onClick(content: Content) = clickListener(content)

@@ -27,7 +27,7 @@
             android:layout_height="match_parent"
             android:layout_marginTop="@dimen/mgrt_margin_doublexxbig"
             android:layout_marginBottom="@dimen/mgrt_margin_xxbig"
-            android:backgroundTint="@color/white_40"
+            android:backgroundTint="@color/white_60"
             app:cardCornerRadius="@dimen/card_radius_default"
             app:layout_constraintTop_toBottomOf="@id/main_toolbar">
 
@@ -65,6 +65,12 @@
                     android:layout_below="@+id/title_detail_object"
                     android:layout_above="@id/link_detail_object"
                     android:layout_margin="12dp"/>
+
+                <ProgressBar
+                    android:id="@+id/progress_bar_main"
+                    style="@style/ProgressBarDefault"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true" />
 
                 <TextView
                     android:id="@+id/link_detail_object"

@@ -8,6 +8,8 @@ import android.transition.TransitionInflater
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.WebChromeClient
+import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -22,6 +24,10 @@ import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.TimeUnit
+
+const val TIME_LOADING_PDF = 1000L
+const val FULLY_PROGRESSBAR = 100
+const val TIME_TRANSITION_FRAGMENT = 100L
 
 class DetailScreen : Fragment() {
 
@@ -55,19 +61,32 @@ class DetailScreen : Fragment() {
 
     @SuppressLint("SetJavaScriptEnabled")
     private fun loadPreviewPdf() {
-        binding.webView.webViewClient = WebViewClient()
         binding.webView.settings.javaScriptEnabled = true
+        binding.webView.webViewClient = WebViewClient()
+
         binding.webView.postDelayed(
             { binding.webView.loadUrl(resources.getString(R.string.google_drive_url) + contentObject.mediaUrl) },
-            500
+            TIME_LOADING_PDF
         )
+
+        binding.webView.webChromeClient =  object: WebChromeClient(){
+            override fun onProgressChanged(view: WebView?, newProgress: Int) {
+                if (newProgress < FULLY_PROGRESSBAR) {
+                    binding.progressBarMain.visibility = View.VISIBLE
+                }
+                if (newProgress == FULLY_PROGRESSBAR) {
+                    binding.progressBarMain.visibility = View.GONE
+                }
+            }
+        }
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         sharedElementEnterTransition = TransitionInflater.from(context).inflateTransition(android.R.transition.slide_right)
-        postponeEnterTransition(250, TimeUnit.MILLISECONDS)
+        postponeEnterTransition(TIME_TRANSITION_FRAGMENT, TimeUnit.MILLISECONDS)
         setupToolbar()
     }
 

@@ -7,7 +7,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardObject"
         style="@style/NewsCard"
-        android:backgroundTint="@color/white_40"
+        android:backgroundTint="@color/white_60"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 

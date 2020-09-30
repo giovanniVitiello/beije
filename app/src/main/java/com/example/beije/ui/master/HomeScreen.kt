@@ -25,7 +25,6 @@ import com.google.gson.Gson
 import org.koin.android.ext.android.inject
 import timber.log.Timber
 
-
 class HomeScreen : Fragment() {
 
     private val homeViewModel: HomeViewModel by inject()

@@ -3,7 +3,7 @@ package com.example.beije.ui.master
 import com.example.beije.Contract
 import com.example.beije.response.MonclairObjectResponse
 import com.example.beije.utils.exhaustive
-import com.nrc.snr.base.BaseViewModel
+import com.example.beije.utils.BaseViewModel
 import io.reactivex.rxjava3.core.Scheduler
 import io.reactivex.rxjava3.disposables.Disposable
 
@@ -33,7 +33,7 @@ class HomeViewModel(
     private fun loadDetailData() {
         if (dataSubscription.isDisposed) {
             post(HomeState.InProgress)
-            dataSubscription = contract.getData()
+            dataSubscription = contract.getNewsData()
                 .observeOn(scheduler)
                 .subscribe(
                     { data -> post(HomeState.LoadedData(data)) },

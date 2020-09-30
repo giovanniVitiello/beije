@@ -2,7 +2,7 @@
     <string name="app_name">Beije</string>
     <string name="base_url">https://www.monclergroup.com/</string>
     <string name="detail">Detail</string>
-    <string name="google_drive_url">https://docs.google.com/viewerng/viewer?url=</string>
+    <string name="google_drive_url">https://docs.google.com/viewer?embedded=true&amp;url=</string>
     <string name="link_object">link object</string>
     <string name="master">Master</string>
     <string name="network_error">Errore di rete, Riprova più tardi!</string>

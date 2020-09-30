@@ -1,7 +1,5 @@
 package com.example.beije.response
 
-import android.os.Parcelable
-
 data class MonclairObjectResponse(
     val content: List<Content>,
     val lang: String,

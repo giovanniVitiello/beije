@@ -1,4 +1,4 @@
-package com.nrc.snr.base
+package com.example.beije.utils
 
 import androidx.lifecycle.ViewModel
 import io.reactivex.rxjava3.disposables.CompositeDisposable
