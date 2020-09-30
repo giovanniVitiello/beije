@@ -31,6 +31,7 @@ class HomeScreen : Fragment() {
     private val gson: Gson by inject()
     private lateinit var binding: MasterScreenBinding
     private lateinit var toolbarBinding: ToolbarWithTitleBinding
+    private var contentList = mutableListOf<Content>()
 
     private val newsItemListener = HomeAdapter.OnClickListener { content ->
         val bundle = gson.toJson(content)
@@ -49,11 +50,12 @@ class HomeScreen : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setupToolbar()
 
+
         homeViewModel.send(HomeEvent.LoadData)
         observeMasterViewModel()
 
         binding.pullToRefresh.setOnRefreshListener {
-            binding.recyclerDataList.adapter = HomeAdapter(mutableListOf(), newsItemListener)
+            contentList.clear()
             homeViewModel.send(HomeEvent.LoadData)
             binding.pullToRefresh.isRefreshing = false
         }
@@ -78,17 +80,17 @@ class HomeScreen : Fragment() {
 
     private fun showTitleObject(titleObject: MonclairObjectResponse) {
         binding.progressBarMain.visibility = View.GONE
-        val contentList = titleObject.content.toMutableList()
+        contentList = titleObject.content.toMutableList()
         binding.recyclerDataList.apply {
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(this@HomeScreen.requireContext())
             adapter = HomeAdapter(contentList, newsItemListener)
         }
 
-        swipeToDelete(contentList)
+        swipeToDelete()
     }
 
-    private fun swipeToDelete(contentList: MutableList<Content>) {
+    private fun swipeToDelete() {
         val swipeHandler = object : SwipeToDeleteCallback(this@HomeScreen.requireContext()) {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 contentList.removeAt(viewHolder.adapterPosition)
