@@ -1,16 +1,13 @@
 package com.example.beije.ui.master
 
 import android.os.Bundle
-import android.transition.TransitionInflater
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
-import androidx.core.view.doOnPreDraw
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavDirections
-import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -65,9 +62,9 @@ class MasterScreen : Fragment() {
 
     private fun setupToolbar() {
         (activity as MainActivity?)?.supportActionBar?.hide()
-        toolbarBinding.toolbarMain.title = getString(R.string.object_title)
-        toolbarBinding.toolbarMain.setTitleTextColor(ContextCompat.getColor(this@MasterScreen.requireContext(), R.color.dark_blue))
-        toolbarBinding.toolbarMain.setBackgroundColor(ContextCompat.getColor(this@MasterScreen.requireContext(), R.color.yellow))
+        toolbarBinding.toolbarMain.title = getString(R.string.news)
+        toolbarBinding.toolbarMain.setTitleTextColor(ContextCompat.getColor(this@MasterScreen.requireContext(), R.color.white))
+        toolbarBinding.toolbarMain.setBackgroundColor(ContextCompat.getColor(this@MasterScreen.requireContext(), R.color.grey))
     }
 
     private fun observeMasterViewModel() {

@@ -57,8 +57,8 @@ class DetailScreen : Fragment() {
     private fun setupToolbar() {
         (activity as MainActivity?)?.supportActionBar?.hide()
         toolbarBinding.toolbarMain.title = getString(R.string.object_detail)
-        toolbarBinding.toolbarMain.setTitleTextColor(ContextCompat.getColor(this@DetailScreen.requireContext(), R.color.dark_blue))
-        toolbarBinding.toolbarMain.setBackgroundColor(ContextCompat.getColor(this@DetailScreen.requireContext(), R.color.yellow))
+        toolbarBinding.toolbarMain.setTitleTextColor(ContextCompat.getColor(this@DetailScreen.requireContext(), R.color.white))
+        toolbarBinding.toolbarMain.setBackgroundColor(ContextCompat.getColor(this@DetailScreen.requireContext(), R.color.grey))
     }
 
     private fun convertStringToData(dataString: String): String {

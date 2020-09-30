@@ -8,6 +8,7 @@
         android:id="@+id/cardObject"
         style="@style/NewsCard"
         app:cardCornerRadius="@dimen/card_radius_default"
+        android:backgroundTint="@color/white_40"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -18,7 +19,7 @@
             android:layout_margin="18dp"
             android:text="@string/title_object"
             android:textAlignment="center"
-            android:textColor="@color/dark_blue"
+            android:textColor="@color/black"
             android:textSize="20sp" />
 
     </androidx.cardview.widget.CardView>
