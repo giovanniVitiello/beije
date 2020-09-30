@@ -64,6 +64,8 @@ class DetailScreen : Fragment() {
         binding.webView.settings.javaScriptEnabled = true
         binding.webView.webViewClient = WebViewClient()
 
+        //
+        //I tried to load the preview of the document in pdf, but sometimes it fails to display, this is a problem of loading pdf in a web page
         binding.webView.postDelayed(
             { binding.webView.loadUrl(resources.getString(R.string.google_drive_url) + contentObject.mediaUrl) },
             TIME_LOADING_PDF

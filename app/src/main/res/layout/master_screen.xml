@@ -7,7 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:src="@drawable/monclair_green" />
+        android:src="@drawable/woman_jacket" />
 
     <RelativeLayout
         xmlns:tools="http://schemas.android.com/tools"
